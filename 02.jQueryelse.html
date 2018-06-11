@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  
+    <header></header>
+
+
+    <input type="text" id="username">
+    <input type="text" id="password">
+    <button>按钮</button>
+
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+    
+    $("button").on("click", function() {
+
+        //只能发送post请求，不用指定type属性
+        //如果注册ajax请求比较简单， 没有参数，也不用指定返回类型。
+        // $.post("01-login.php", {username:'zs',password:"12345"},function(info){//成功的时候执行
+        //   console.log(info);
+        // });
+
+        //$.getJSON:允许直接访问一个服务端的json文件
+        //$.getScript() : 允许访问服务端的一个js文件
+        // $.getJSON("data.json", function(info) {
+        //   console.log(info);
+        // })
+        //$("div").load("html文件"): 允许加载一个其他的html文件
+
+        // $.getScript("jquery-1.12.4.js", function(info) {
+        //   console.log(info);
+        // });
+
+        //可以加载一个公共的html文件
+        $("header").load("header.html", function() {
+            console.log("加载成功了");
+        })
+    });
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <!-- 展示个人信息 -->
+  <div>
+
+  </div>
+
+  <!-- 1. 引入模板引擎文件 -->
+  <script src="template-web.js"></script>
+  <!-- 2. 准备模板,模版需要指定type:text/html  不会在页面中显示 -->
+  <script type="text/html" id="tpl">
+    <p>姓名：{{ name }}</p>
+    <p>性别：{{ gender }}</p>
+    <p>年龄：{{ age }}</p>
+    <p>爱好：{{ hobby }}</p>
+    <p>描述：{{ desc }}</p>
+  </script>
+
+  <script>
+
+    //3. 准备数据,先从服务端获取到数据
+    var obj = {
+        name: "隔壁小王",
+        gender: "男2",
+        age: 25,
+        hobby: "串门",
+        desc: "年轻气力盛1111"
+    }
+
+    //4. 结合模板和数据(就会产生一个html的结构)
+    // 在模板中可以使用对象的任意的属性。
+    //参数1：模板的id, 直接写id即可，不需要加#
+    //参数2：数据，对象
+    var html = template("tpl", obj);
+    
+    //5. 把结果显示到页面中
+    var div = document.querySelector("div");
+    div.innerHTML = html;
+
+  </script>
+
+</body>
+
+</html>

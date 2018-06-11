@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="username">
+    <input type="text" id="password">
+    <button>按钮</button>
+  
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+      
+    $("button").on("click", function() {
+  
+        // $.ajax()  :作用：用于给后端发送ajax请求,用法和我们自己封装的ajax基本一致
+        $.ajax({
+            type: 'post',  //指定请求类型  get/post 默认get
+            url: '01.login.php',   //指定请求的地址
+            //timeout: 2000,//表示这个ajax接口，如果2秒没有响应，就会报错
+            data: {
+                //指定传递的参数， 支持字符串或者是对象，如果传了对象，会自动拼成字符串
+                username: $("#username").val(),//返回或设置被选元素的值
+                password: $("#password").val()
+            },
+            dataType: 'json', //指定返回的数据类型 xml/json/text
+            beforeSend: function() {
+                //可以在beforeSend中做一些表单的校验工作
+                console.log("在发送前会执行");
+                //如果在beforeSend中return false了，阻止整个ajax的发送
+                //return false;
+            },
+            success: function(info) {//成功的回调函数
+                console.log("成功了");
+                console.log(info);
+            },
+            error: function(error) {//失败的时候的回调函数
+                console.log("失败了");
+                console.log(error);
+            },
+            complete: function() {//在整个ajax完成的时候会执行complete，无论成功或者失败
+                console.log("无论成功或者失败，我都会执行");
+            }
+        });
+  
+    });
+      
+  
+    </script>
+  
+</body>
+</html>
